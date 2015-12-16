@@ -78,13 +78,13 @@ try:
 				urllib.request.urlretrieve("http://magiccards.info/%s/%s/%s.html"%(set, language, number), "card_data/%s/%s/%s.html"%(set, language, number))
 				print ("http://magiccards.info/%s/%s/%s.html"%(set, language, number))
 				logging.info("http://magiccards.info/%s/%s/%s.html"%(set, language, number))
-				time.sleep(30)
+				time.sleep(10)
 
 			if os.path.exists("card_data/%s/%s/images/%s.jpg"%(set, language, number)) == False:
 				urllib.request.urlretrieve("http://magiccards.info/scans/%s/%s/%s.jpg"%(language, set, number), "card_data/%s/%s/images/%s.jpg"%(set, language, number))
 				print ("http://magiccards.info/scans/%s/%s/%s.jpg"%(language, set, number))
 				logging.info("http://magiccards.info/scans/%s/%s/%s.jpg"%(language, set, number))
-				time.sleep(30)
+				time.sleep(10)
 
 except:
 	print("Unexpected error:", sys.exc_info()[0])
