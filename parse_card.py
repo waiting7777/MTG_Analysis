@@ -18,7 +18,7 @@ logging.basicConfig(level=logging.DEBUG,
 exec(open(os.getcwd() + "/config/config.py").read())
 
 #f = codecs.open("card_data/%s/%s/%s_%s.html"%(set, language, set, language), 'r', 'utf8')
-f = codecs.open("card_data/bfz/en/1.html", 'r', 'utf8')
+f = codecs.open("card_data/bfz/en/bfz_en.html", 'r', 'utf8')
 
 content = f.read()
 
@@ -26,16 +26,22 @@ soup = BeautifulSoup(content, 'html.parser')
 
 f.close()
 
+w = codecs.open('test.txt', 'w', 'utf8')
+
 cardinfo = {}
+flag = 0
 
-cardinfo[0]  = {}
+print(soup.select('table[cellpadding="3"] tr td'))
 
-cardinfo[0]['card_name'] = soup.select('span a')[0].text.strip()
+for item in soup.select('table[cellpadding="3"] tr'):
+	if flag == 0:
+		flag += 1
+		continue
+	
+	temp = item.text.split('\n')
 
-print(soup.select('table p')[0].text)
+	for i in range(1, 7):
+		w.write(temp[i] + ', ')
+	w.write('\n')
 
-content = soup.select('table p')[0].text
 
-a = content.split()
-
-print(soup.select('span a'))
